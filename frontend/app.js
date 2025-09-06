@@ -27,7 +27,7 @@ class VeriChain {
             university: 'IIT Delhi',
             year: '2024',
             cgpa: '9.2',
-            studentWallet: '0xab...cdef',
+            studentWallet: '0xab...cdef', // Placeholder wallet
             txHash: '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef',
             timestamp: new Date().toISOString()
         }];
@@ -75,7 +75,17 @@ class VeriChain {
         walletBtn.style.background = 'var(--success)';
         walletText.textContent = 'Connected';
         walletInfo.classList.remove('hidden');
-        walletAddress.textContent = this.formatAddress(address);
+        
+        // --- MODIFICATION START ---
+        // Make the wallet address display a clickable span for copying
+        walletAddress.innerHTML = `<span title="Click to copy full address" style="cursor: pointer;">${this.formatAddress(address)}</span>`;
+        
+        // Add a one-time event listener for the new clickable span
+        walletAddress.firstElementChild.addEventListener('click', () => {
+            navigator.clipboard.writeText(this.connectedWallet);
+            this.showNotification('Full wallet address copied!', 'success');
+        });
+        // --- MODIFICATION END ---
 
         this.showNotification('Wallet connected successfully!', 'success');
         this.updateStudentDashboard();
