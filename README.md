@@ -176,8 +176,6 @@ The backend provides a full RESTful API for integration.
 
 ---
 
-Built with ❤️ for **HackOdisha 5.0**.
-
 </div>
 
 <div align="center">
@@ -190,6 +188,6 @@ Built with ❤️ for **HackOdisha 5.0**.
 
 ---
 
-Built with ❤️ for **HackOdisha 5.0**.
+Built with ❤️ by Vaibhav Singh & Vanshika Ludhani for **HackOdisha 5.0**
 
 </div>
