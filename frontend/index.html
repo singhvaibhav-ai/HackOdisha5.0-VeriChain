@@ -1,93 +1,156 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>VeriChain</title>
-  <link rel="stylesheet" href="styles.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 VeriChain - Academic Credential Verification</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-  <header>
-    <h1>VeriChain</h1>
-    <button id="connectBtn">Connect Wallet</button>
-    <span id="accountBadge"></span>
-  </header>
 
-  <nav>
-    <button class="tab-btn active" data-tab="university">University</button>
-    <button class="tab-btn" data-tab="student">Student</button>
-    <button class="tab-btn" data-tab="employer">Employer</button>
-  </nav>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand">🎓 VeriChain</a>
+            <div class="wallet-section">
+                <div id="walletInfo" class="wallet-info hidden">
+                    <div id="walletAddress" class="wallet-address"></div>
+                    <div class="network">Sepolia Testnet</div>
+                </div>
+                <button id="connectWallet" class="wallet-btn">
+                    <i class="fas fa-wallet"></i>
+                    <span id="walletText">Connect Wallet</span>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-  <main>
-    <!-- University Tab -->
-    <section id="university" class="tab active">
-      <h2>Issue Credential (NFT)</h2>
-      <form id="issueForm">
-        <div class="field">
-          <label>Student Wallet Address</label>
-          <input type="text" name="student" placeholder="0x..." required />
+    <header class="hero">
+        <div class="hero-content">
+            <h1>The Future of Academic Verification</h1>
+            <p>Transforming credential verification from weeks to seconds with tamper-proof, blockchain-powered technology.</p>
         </div>
-        <div class="field">
-          <label>Student Name</label>
-          <input type="text" name="name" placeholder="e.g., Vaibhav Singh" required />
+        <div class="stats">
+            <div class="stat">
+                <div id="credentialsIssued" class="stat-number">0</div>
+                <div class="stat-label">Credentials Issued</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Partner Universities</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Fraud Prevention</div>
+            </div>
         </div>
-        <div class="field">
-          <label>Degree</label>
-          <input type="text" name="degree" placeholder="e.g., B.Tech Electrical" required />
-        </div>
-        <div class="field">
-          <label>Year</label>
-          <input type="text" name="year" placeholder="e.g., 2026" required />
-        </div>
-        <div class="field">
-          <label>Chain</label>
-          <select name="chain">
-            <option value="sepolia">Sepolia (ETH testnet)</option>
-          </select>
-        </div>
-        <button type="submit">Issue Credential NFT</button>
-      </form>
-      <div id="issueResult" class="card"></div>
-    </section>
+    </header>
 
-    <!-- Student Tab -->
-    <section id="student" class="tab">
-      <h2>Your Credentials</h2>
-      <p>Connect your wallet to view your address. NFTs minted to your wallet will appear on testnet explorers.</p>
-      <div id="studentInfo" class="card"></div>
-    </section>
-
-    <!-- Employer Tab -->
-    <section id="employer" class="tab">
-      <h2>Verify Credential</h2>
-      <form id="verifyForm">
-        <div class="field">
-          <label>Contract Address</label>
-          <input type="text" name="contract" placeholder="0x..." required />
+    <main class="tabs-container">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="university">
+                <i class="fas fa-university"></i> University Portal
+            </button>
+            <button class="tab-btn" data-tab="student">
+                <i class="fas fa-user-graduate"></i> Student Dashboard
+            </button>
+            <button class="tab-btn" data-tab="employer">
+                <i class="fas fa-building"></i> Employer Verification
+            </button>
         </div>
-        <div class="field">
-          <label>Token ID</label>
-          <input type="number" name="tokenId" placeholder="e.g., 1" required />
+
+        <div id="university" class="tab-content active">
+            <div class="content-container">
+                <section class="credential-form">
+                    <div class="section-header">
+                        <h2><i class="fas fa-scroll"></i> Issue New Credential</h2>
+                        <p>Mint a new, permanent academic credential as an NFT on the blockchain.</p>
+                    </div>
+                    <form id="issueForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="studentWallet"><i class="fas fa-wallet"></i> Student Wallet</label>
+                                <input type="text" id="studentWallet" name="studentWallet" placeholder="0x..." required>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentName"><i class="fas fa-user"></i> Student Name</label>
+                                <input type="text" id="studentName" name="studentName" placeholder="e.g., Vaibhav Singh" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="degree"><i class="fas fa-graduation-cap"></i> Degree</label>
+                                <input type="text" id="degree" name="degree" placeholder="e.g., B.Tech Computer Science" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="universityName"><i class="fas fa-university"></i> University</label>
+                                <input type="text" id="universityName" name="university" placeholder="e.g., NIT Rourkela" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="year"><i class="fas fa-calendar-alt"></i> Graduation Year</label>
+                                <input type="number" id="year" name="year" placeholder="e.g., 2026" required>
+                            </div>
+                             <div class="form-group">
+                                <label for="cgpa"><i class="fas fa-star"></i> Final CGPA</label>
+                                <input type="text" id="cgpa" name="cgpa" placeholder="e.g., 8.7" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="primary-btn">
+                            <i class="fas fa-hammer"></i> Mint Credential NFT
+                            <span class="btn-glow"></span>
+                        </button>
+                    </form>
+                    <div id="issueResult" class="result-section hidden"></div>
+                </section>
+            </div>
         </div>
-        <div class="field">
-          <label>Claimed Student Wallet</label>
-          <input type="text" name="claimed" placeholder="0x..." required />
+
+        <div id="student" class="tab-content">
+            <div class="content-container">
+                 <div class="section-header">
+                    <h2><i class="fas fa-id-card"></i> Your Digital Portfolio</h2>
+                    <p>All blockchain-verified credentials issued to your connected wallet.</p>
+                </div>
+                <div id="studentCredentials" class="credentials-grid">
+                    </div>
+            </div>
         </div>
-        <button type="submit">Verify Ownership</button>
-      </form>
-      <div id="verifyResult" class="card"></div>
-    </section>
-  </main>
 
-  <footer>
-    <small>© VeriChain – Hackathon demo</small>
-  </footer>
+        <div id="employer" class="tab-content">
+            <div class="content-container">
+                <section class="verify-form">
+                     <div class="section-header">
+                        <h2><i class="fas fa-shield-alt"></i> Verify a Credential</h2>
+                        <p>Instantly confirm the authenticity of any VeriChain credential.</p>
+                    </div>
+                    <form id="verifyForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="credentialId"><i class="fas fa-hashtag"></i> Credential ID</label>
+                                <input type="text" id="credentialId" name="credentialId" placeholder="e.g., VRC-001" required>
+                                <small>The unique ID provided to the student.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="verifyWallet"><i class="fas fa-wallet"></i> Claimed Student Wallet</label>
+                                <input type="text" id="verifyWallet" name="verifyWallet" placeholder="0x..." required>
+                                <small>The wallet address the student claims to own.</small>
+                            </div>
+                        </div>
+                        <button type="submit" class="verify-btn">
+                            <i class="fas fa-check-circle"></i> Verify Authenticity
+                        </button>
+                    </form>
+                    <div id="verifyResult" class="result-section hidden"></div>
+                </section>
+            </div>
+        </div>
+    </main>
 
-  <!-- Load ethers.js first -->
-  <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.umd.min.js"></script>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">Built for HackOdisha 5.0 🚀</div>
+            <p>© 2025 VeriChain. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-  <!-- Then load your custom app.js -->
-  <script src="app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
