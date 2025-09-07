@@ -1,7 +1,7 @@
 # 🎓 VeriChain
 ### Blockchain-Powered Academic Credential Verification System
 
-
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Here-success)](https://verichain.netlify.app/)
 [![Built for HackOdisha 5.0](https://img.shields.io/badge/Built%20for-HackOdisha%205.0-blue)](https://hackodisha.com)
 [![Blockchain](https://img.shields.io/badge/Blockchain-Ethereum-purple)](https://ethereum.org)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
